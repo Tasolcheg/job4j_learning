@@ -3,7 +3,7 @@ package ru.job4j.calculate;
 /**
  * Calculate.
  *
- * @author Kretov Alexandr (mailto:parsentev@yandex.ru)
+ * @author Kretov Alexandr (mailto:no mail)
  * @version $Id$
  * @since 0.1
  */
