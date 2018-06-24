@@ -14,6 +14,7 @@ public class CalculatorTest {
         double expected = 2D;
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenminus() {
         Calculator calc = new Calculator();
@@ -22,6 +23,7 @@ public class CalculatorTest {
         double expected = 2D;
         assertThat(result, is(expected));
     }
+
     @Test
     public void whendelenie() {
         Calculator calc = new Calculator();
@@ -30,6 +32,7 @@ public class CalculatorTest {
         double expected = 3D;
         assertThat(result, is(expected));
     }
+
     @Test
     public void whendunmoj() {
         Calculator calc = new Calculator();
