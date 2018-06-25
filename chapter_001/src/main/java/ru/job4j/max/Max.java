@@ -20,10 +20,7 @@ public class Max {
     }
 
     public int maxx(int first, int second, int third) {
-        Max proverka = new Max();
-        int resProverka = proverka.max(first, second);
-        int resTwoProverka = proverka.max(resProverka, third);
-        return resTwoProverka;
+        return max(max(first, second), third);
     }
 
 }
