@@ -18,4 +18,12 @@ public class Max {
     public int max(int first, int second) {
         return first > second ? first : second;
     }
+
+    public int maxx(int first, int second, int third) {
+        Max proverka = new Max();
+        int resProverka = proverka.max(first, second);
+        int resTwoProverka = proverka.max(resProverka, third);
+        return resTwoProverka;
+    }
+
 }
