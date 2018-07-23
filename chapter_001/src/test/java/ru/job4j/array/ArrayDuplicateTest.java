@@ -16,7 +16,7 @@ public class ArrayDuplicateTest {
         ArrayDuplicate sorter = new ArrayDuplicate();
         String[] input = new String[]{"Привет", "Мир", "Привет", "Супер", "Мир", "Собака"};
         String[] result = sorter.stringsort(input);
-        String[] expect = new String[] {"Привет", "Мир", "Супер", "Собака"};
+        String[] expect = new String[]{"Привет", "Мир", "Супер", "Собака"};
         assertThat(result, Matchers.is(expect));
     }
 }

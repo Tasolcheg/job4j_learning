@@ -15,16 +15,14 @@ public class ArrayDuplicate {
                         break;
                     }
                 } else {
-                    if (i > x) {
-                    } else {
+                    if (i <= x) {
                         array[fin++] = array[i];
                         break;
                     }
                 }
             }
         }
-        String[] newArray;
-        return newArray = Arrays.copyOf(array, fin);
+        return Arrays.copyOf(array, fin);
     }
 }
 

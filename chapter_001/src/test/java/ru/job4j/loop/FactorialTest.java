@@ -1,4 +1,5 @@
 package ru.job4j.loop;
+
 import org.junit.Test;
 
 
@@ -12,7 +13,7 @@ public class FactorialTest {
      * @since 0.1
      */
     @Test
-    public void FactorialTest() {
+    public void factorialTest() {
         Factorial m = new Factorial();
         int result = m.factorial(10);
         assertThat(result, is(3628800));

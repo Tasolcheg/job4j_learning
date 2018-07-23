@@ -15,7 +15,7 @@ public class BubbleSortTest {
         BubbleSort sorter = new BubbleSort();
         int[] input = new int[]{3, 5, 4, 2, 0, 1, 7, 8, 1, 5, 0, 0};
         int[] result = sorter.bubblesort(input);
-        int[] expect = new int[] {0, 0, 0, 1, 1, 2, 3, 4, 5, 5, 7, 8};
+        int[] expect = new int[]{0, 0, 0, 1, 1, 2, 3, 4, 5, 5, 7, 8};
         assertThat(result, Matchers.is(expect));
     }
 }

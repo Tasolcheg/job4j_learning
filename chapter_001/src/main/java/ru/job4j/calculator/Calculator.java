@@ -1,4 +1,5 @@
 package ru.job4j.calculator;
+
 /**
  * Простой калькулятор.
  */
@@ -7,7 +8,8 @@ public class Calculator {
 
     /**
      * Сложение.
-     * @param first число.
+     *
+     * @param first  число.
      * @param second число/
      * @return Результат.
      */
@@ -17,7 +19,8 @@ public class Calculator {
 
     /**
      * Вычетание.
-     * @param first число.
+     *
+     * @param first  число.
      * @param second число/
      * @return Результат.
      */
@@ -27,7 +30,8 @@ public class Calculator {
 
     /**
      * Деление.
-     * @param first число.
+     *
+     * @param first  число.
      * @param second число/
      * @return Результат.
      */
@@ -37,7 +41,8 @@ public class Calculator {
 
     /**
      * Умножение.
-     * @param first число.
+     *
+     * @param first  число.
      * @param second число/
      * @return Результат.
      */
