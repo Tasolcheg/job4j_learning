@@ -7,114 +7,9 @@ public class Logic3T {
         this.table = table;
     }
 
-    public boolean isWinnerXDiagonally() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (this.table[0][0].hasMarkX() && this.table[i][i].hasMarkX()
-                    || this.table[0][this.table.length - 1].hasMarkX()
-                    && this.table[i][this.table.length - 1 - i].hasMarkX()) {
-                result = true;
-            } else {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public boolean isWinnerXHorizontally() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (result) {
-                break;
-            } else {
-                for (int x = 0; x < this.table.length; x++) {
-                    if (this.table[x][i].hasMarkX() && this.table[0][i].hasMarkX()) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
-    public boolean isWinnerXVertically() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (result) {
-                break;
-            } else {
-                for (int x = 0; x < this.table.length; x++) {
-                    if (this.table[i][x].hasMarkX() && this.table[i][0].hasMarkX()) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return result;
-    }
 
     public boolean isWinnerX() {
         return (isWinnerXDiagonally() || isWinnerXHorizontally() || isWinnerXVertically());
-    }
-
-    public boolean isWinnerODiagonally() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (this.table[0][0].hasMarkO() && this.table[i][i].hasMarkO()
-                    || this.table[0][this.table.length - 1].hasMarkO()
-                    && this.table[i][this.table.length - 1 - i].hasMarkO()) {
-                result = true;
-            } else {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public boolean isWinnerOHorizontally() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (result) {
-                break;
-            } else {
-                for (int x = 0; x < this.table.length; x++) {
-                    if (this.table[x][i].hasMarkO() && this.table[0][i].hasMarkO()) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
-    public boolean isWinnerOVertically() {
-        boolean result = false;
-        for (int i = 0; i < this.table.length; i++) {
-            if (result) {
-                break;
-            } else {
-                for (int x = 0; x < this.table.length; x++) {
-                    if (this.table[i][x].hasMarkO() && this.table[i][0].hasMarkO()) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return result;
     }
 
     public boolean isWinnerO() {
@@ -137,4 +32,111 @@ public class Logic3T {
         }
         return result;
     }
+
+    private boolean isWinnerXDiagonally() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (this.table[0][0].hasMarkX() && this.table[i][i].hasMarkX()
+                    || this.table[0][this.table.length - 1].hasMarkX()
+                    && this.table[i][this.table.length - 1 - i].hasMarkX()) {
+                result = true;
+            } else {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    private boolean isWinnerXHorizontally() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (result) {
+                break;
+            } else {
+                for (int x = 0; x < this.table.length; x++) {
+                    if (this.table[x][i].hasMarkX() && this.table[0][i].hasMarkX()) {
+                        result = true;
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private boolean isWinnerXVertically() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (result) {
+                break;
+            } else {
+                for (int x = 0; x < this.table.length; x++) {
+                    if (this.table[i][x].hasMarkX() && this.table[i][0].hasMarkX()) {
+                        result = true;
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private boolean isWinnerODiagonally() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (this.table[0][0].hasMarkO() && this.table[i][i].hasMarkO()
+                    || this.table[0][this.table.length - 1].hasMarkO()
+                    && this.table[i][this.table.length - 1 - i].hasMarkO()) {
+                result = true;
+            } else {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    private boolean isWinnerOHorizontally() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (result) {
+                break;
+            } else {
+                for (int x = 0; x < this.table.length; x++) {
+                    if (this.table[x][i].hasMarkO() && this.table[0][i].hasMarkO()) {
+                        result = true;
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private boolean isWinnerOVertically() {
+        boolean result = false;
+        for (int i = 0; i < this.table.length; i++) {
+            if (result) {
+                break;
+            } else {
+                for (int x = 0; x < this.table.length; x++) {
+                    if (this.table[i][x].hasMarkO() && this.table[i][0].hasMarkO()) {
+                        result = true;
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
 }
