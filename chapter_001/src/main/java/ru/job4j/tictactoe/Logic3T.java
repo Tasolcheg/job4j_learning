@@ -6,8 +6,7 @@ public class Logic3T {
     public Logic3T(Figure3T[][] table) {
         this.table = table;
     }
-
-
+    
     public boolean isWinnerX() {
         return (isWinnerXDiagonally() || isWinnerXHorizontally() || isWinnerXVertically());
     }
