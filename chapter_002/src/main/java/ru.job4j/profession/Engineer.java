@@ -1,10 +1,11 @@
 package ru.job4j.profession;
 
-public class Inginer extends Profession {
+public class Engineer extends Profession {
     String name;
 
-    public Inginer(String name) {
-        this.name = name;
+    public Engineer(String name, String profession, String name1) {
+        super(name, profession);
+        this.name = name1;
     }
 
     public House build(House house) {
