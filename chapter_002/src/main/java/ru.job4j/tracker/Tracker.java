@@ -52,13 +52,7 @@ public class Tracker {
      * @return
      */
     public Item[] findAll() {
-        int i = 0;
-        for (Item a : items) {
-            if (a != null) {
-                i++;
-            }
-        }
-        Item[] result = Arrays.copyOf(items, i);
+        Item[] result = Arrays.copyOf(items, position);
         return result;
     }
 
@@ -68,10 +62,15 @@ public class Tracker {
      * @param id
      * @param item
      */
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         int inde = this.getIndex(id);
-        item.setId(this.items[inde].getId());
-        this.items[inde] = item;
+        if (inde != -1) {
+            item.setId(this.items[inde].getId());
+            this.items[inde] = item;
+            result = true;
+        }
+        return result;
     }
 
     /**
@@ -79,9 +78,15 @@ public class Tracker {
      *
      * @param id
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         int ind = this.getIndex(id);
-        System.arraycopy(items, ind + 1, items, ind, this.items.length - ind - 1);
+        if (ind != -1) {
+            System.arraycopy(items, ind + 1, items, ind, this.items.length - ind - 1);
+            position--;
+            result = true;
+        }
+        return result;
     }
 
     /**
@@ -93,9 +98,9 @@ public class Tracker {
     public Item[] findByName(String name) {
         int ind = 0;
         Item[] itemTemp = new Item[100];
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null && this.items[i].getName().equals(name)) {
-                itemTemp[ind++] = this.getItems()[i];
+        for (Item a : items) {
+            if (a != null && a.getName().equals(name)) {
+                itemTemp[ind++] = a;
             }
         }
         Item[] itemss = Arrays.copyOf(itemTemp, ind);
@@ -126,7 +131,7 @@ public class Tracker {
     public int getIndex(String id) {
         int result = -1;
         for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i].getId().equals(id)) {
+            if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 result = i;
                 break;
             }

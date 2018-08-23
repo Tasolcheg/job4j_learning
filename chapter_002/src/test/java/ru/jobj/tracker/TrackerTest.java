@@ -60,9 +60,21 @@ public class TrackerTest {
             tracker.add(new Item(x + "name", x + "desc", 99L)); // создаем заявки
         }
         assertThat(tracker.getItems()[2].getName(), is("2name")); // до удаления
-        tracker.delete(tracker.getItems()[2].getId());                  //удаление
+        boolean result = tracker.delete(tracker.getItems()[2].getId());                  //удаление
         assertThat(tracker.getItems()[2].getName(), is("3name")); //после удаления
         assertThat(tracker.getItems().length, is(100)); //проверяем длинну (она имеет значение)
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void trackerNotDeleteTest() {
+        Tracker tracker = new Tracker();
+        for (int x = 0; x <= 10; x++) {
+            tracker.add(new Item(x + "name", x + "desc", 99L)); // создаем заявки
+        }
+         boolean result = tracker.delete("123123");                  //удаление
+        assertThat(tracker.getItems()[2].getName(), is("2name")); //после удаления
+        assertThat(result, is(false));
     }
 
     @Test
@@ -76,10 +88,28 @@ public class TrackerTest {
         assertThat(tracker.findAll().length, is(11));
         assertThat(tracker.getItems()[i].getCreate(), is(99L));
         String idd = tracker.getItems()[i].getId();
-        tracker.replace(tracker.getItems()[i].getId(), new Item("newname", "newdesc", 98L));
+        boolean result = tracker.replace(tracker.getItems()[i].getId(), new Item("newname", "newdesc", 98L));
         assertThat(tracker.getItems()[i].getName(), is("newname"));
         assertThat(tracker.findAll().length, is(11));
         assertThat(tracker.getItems()[i].getId(), is(idd));
         assertThat(tracker.getItems()[i].getCreate(), is(98L));
+        assertThat(result, is(true));
+    }
+    @Test
+    public void trackerNotReplaceTest() {
+        Tracker tracker = new Tracker();
+        for (int i = 0; i <= 10; i++) {
+            tracker.add(new Item(i + "name", i + "desc", 99L));
+        }
+        int i = 3;
+        assertThat(tracker.getItems()[i].getName(), is("3name"));
+        assertThat(tracker.findAll().length, is(11));
+        assertThat(tracker.getItems()[i].getCreate(), is(99L));
+        String idd = tracker.getItems()[i].getId();
+        boolean result = tracker.replace("123123", new Item("newname", "newdesc", 98L));
+        assertThat(result, is(false));
+        assertThat(tracker.getItems()[i].getName(), is("3name"));
+        assertThat(tracker.findAll().length, is(11));
+        assertThat(tracker.getItems()[i].getCreate(), is(99L));
     }
 }
