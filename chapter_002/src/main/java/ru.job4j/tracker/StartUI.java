@@ -102,12 +102,7 @@ public class StartUI {
     private void findALL() {
         System.out.println("Все заявки");
         for (Item a : this.tracker.findAll()) {
-            System.out.println("id заявки");
-            System.out.println(a.getId());
-            System.out.println("Название заявки");
-            System.out.println(a.getName());
-            System.out.println("Описание заявки");
-            System.out.println(a.getDescription());
+            System.out.println(a.toString());
         }
     }
 
@@ -117,38 +112,36 @@ public class StartUI {
         Item result = this.tracker.findById(id);
         String name = input.ask("Введите новое название");
         String desc = input.ask("Введите новое описание");
-        this.tracker.replace(id, new Item(name, desc));
+        Boolean res = this.tracker.replace(id, new Item(name, desc));
+        if (res){
+            System.out.println("Заявка изменена");
+        } else {
+            System.out.println("ID не найдено");
+        }
     }
 
     private void delete() {
         System.out.println("Удаление по id");
         String id = input.ask("Введите id");
-        this.tracker.delete(id);
+        boolean result = this.tracker.delete(id);
+        if (result){
+            System.out.println("Заявка удалена");
+        } else {
+            System.out.println("ID не найден");
+        }
     }
 
     private void findbyid() {
         System.out.println("Поиск по id");
-        String id = input.ask("Введите id");
-        Item result = this.tracker.findById(id);
-        System.out.println("id заявки");
-        System.out.println(result.getId());
-        System.out.println("азвание заявки");
-        System.out.println(result.getName());
-        System.out.println("Описание заявки");
-        System.out.println(result.getDescription());
+        Item result = this.tracker.findById(input.ask("Введите id"));
+        System.out.println(result.toString());
     }
 
     private void finditembyname() {
         System.out.println("Поиск по id");
-        String name = input.ask("Введите название заявки");
-        Item[] result = this.tracker.findByName(name);
+        Item[] result = this.tracker.findByName(input.ask("Введите название заявки"));
         for (Item a : result) {
-            System.out.println("Id заявки");
-            System.out.println(a.getId());
-            System.out.println("Название заявки");
-            System.out.println(a.getName());
-            System.out.println("Описание заявки");
-            System.out.println(a.getDescription());
+            System.out.println(a.toString());
         }
     }
 
