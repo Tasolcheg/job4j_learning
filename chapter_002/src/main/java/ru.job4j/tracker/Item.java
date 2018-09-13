@@ -22,11 +22,11 @@ public class Item {
 
     @Override
     public String toString() {
-        return "ID заявки" + System.lineSeparator() +
-                id + System.lineSeparator() +
-                "Название заявки" + System.lineSeparator() +
-                name + System.lineSeparator() +
-                "Описание заявки" + System.lineSeparator() + description;
+        return "ID заявки" + System.lineSeparator()
+                + id + System.lineSeparator()
+                + "Название заявки" + System.lineSeparator()
+                + name + System.lineSeparator()
+                + "Описание заявки" + System.lineSeparator() + description;
     }
 
     public String getId() {

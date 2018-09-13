@@ -102,18 +102,17 @@ public class StartUI {
     private void findALL() {
         System.out.println("Все заявки");
         for (Item a : this.tracker.findAll()) {
-            System.out.println(a.toString());
+            System.out.println(a);
         }
     }
 
     private void edit() {
         System.out.println("Редактирование заяки");
         String id = input.ask("Введите id");
-        Item result = this.tracker.findById(id);
         String name = input.ask("Введите новое название");
         String desc = input.ask("Введите новое описание");
         Boolean res = this.tracker.replace(id, new Item(name, desc));
-        if (res){
+        if (res) {
             System.out.println("Заявка изменена");
         } else {
             System.out.println("ID не найдено");
@@ -124,7 +123,7 @@ public class StartUI {
         System.out.println("Удаление по id");
         String id = input.ask("Введите id");
         boolean result = this.tracker.delete(id);
-        if (result){
+        if (result) {
             System.out.println("Заявка удалена");
         } else {
             System.out.println("ID не найден");

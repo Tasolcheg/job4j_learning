@@ -52,8 +52,7 @@ public class Tracker {
      * @return
      */
     public Item[] findAll() {
-        Item[] result = Arrays.copyOf(items, position);
-        return result;
+        return Arrays.copyOf(items, position);
     }
 
     /**
