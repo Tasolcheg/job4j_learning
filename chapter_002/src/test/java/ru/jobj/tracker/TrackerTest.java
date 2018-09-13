@@ -72,7 +72,7 @@ public class TrackerTest {
         for (int x = 0; x <= 10; x++) {
             tracker.add(new Item(x + "name", x + "desc", 99L)); // создаем заявки
         }
-         boolean result = tracker.delete("123123");                  //удаление
+        boolean result = tracker.delete("123123");                  //удаление
         assertThat(tracker.getItems()[2].getName(), is("2name")); //после удаления
         assertThat(result, is(false));
     }
@@ -95,6 +95,7 @@ public class TrackerTest {
         assertThat(tracker.getItems()[i].getCreate(), is(98L));
         assertThat(result, is(true));
     }
+
     @Test
     public void trackerNotReplaceTest() {
         Tracker tracker = new Tracker();
