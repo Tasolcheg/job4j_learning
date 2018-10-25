@@ -96,7 +96,7 @@ public class StartUI {
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        System.out.println("Новая заявка с getId : " + item.getId());
+        System.out.println("Новая заявка с Id : " + item.getId());
     }
 
     private void findALL() {
@@ -133,7 +133,11 @@ public class StartUI {
     private void findbyid() {
         System.out.println("Поиск по id");
         Item result = this.tracker.findById(input.ask("Введите id"));
-        System.out.println(result.toString());
+        if (result == null) {
+            System.out.println("Заявка не найдена");
+        } else {
+            System.out.println(result.toString());
+        }
     }
 
     private void finditembyname() {
