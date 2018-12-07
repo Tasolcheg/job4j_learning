@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @version $Id$
  * @since 0.1
@@ -58,34 +61,54 @@ public class StartUI {
     /**
      * Основой цикл программы.
      */
+//    public void init() {
+//        boolean exit = false;
+//        while (!exit) {
+//            this.showMenu();
+//            String answer = this.input.ask("Введите пункт меню : ");
+//            if (ADD.equals(answer)) {
+//                //добавление заявки вынесено в отдельный метод.
+//                this.createItem();
+//            } else if (ALL.equals(answer)) {
+//                this.findALL();
+//            } else if (EDIT.equals(answer)) {
+//                this.edit();
+//            } else if (DELETE.equals(answer)) {
+//                this.delete();
+//            } else if (FINDBYID.equals(answer)) {
+//                this.findbyid();
+//            } else if (FINDITEMBYNAME.equals(answer)) {
+//                this.finditembyname();
+//            } else if (EXIT.equals(answer)) {
+//                exit = true;
+//            } else {
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+//                System.out.println("XXXX Неверный выбор XXXX");
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+//            }
+//        }
+//    }
     public void init() {
-        boolean exit = false;
-        while (!exit) {
-            this.showMenu();
-            String answer = this.input.ask("Введите пункт меню : ");
-            if (ADD.equals(answer)) {
-                //добавление заявки вынесено в отдельный метод.
-                this.createItem();
-            } else if (ALL.equals(answer)) {
-                this.findALL();
-            } else if (EDIT.equals(answer)) {
-                this.edit();
-            } else if (DELETE.equals(answer)) {
-                this.delete();
-            } else if (FINDBYID.equals(answer)) {
-                this.findbyid();
-            } else if (FINDITEMBYNAME.equals(answer)) {
-                this.finditembyname();
-            } else if (EXIT.equals(answer)) {
-                exit = true;
-            } else {
-                System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
-                System.out.println("XXXX Неверный выбор XXXX");
-                System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
-            }
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
+        menu.fillActions();
+        for (int i = 0; i < menu.getActionsLentgh(); i++) {
+            range.add(i);
         }
-    }
+        do {
+            menu.show();
+            String ttest = input.ask("Введите пункт меню");
+            if (ttest.matches("\\D+") || ttest.equals("")) {
+                System.out.println("Неверный ввод");
+            } else {
+                Integer kkey = Integer.valueOf(ttest);
 
+                if (kkey < menu.getActionsLentgh()) {
+                    menu.select(kkey);
+                }
+            }
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+    }
 
     /**
      * Метод реализует добавленяи новый заявки в хранилище.
@@ -106,7 +129,7 @@ public class StartUI {
         }
     }
 
-    private void edit() {
+    public void edit() {
         System.out.println("Редактирование заяки");
         String id = input.ask("Введите id");
         String name = input.ask("Введите новое название");

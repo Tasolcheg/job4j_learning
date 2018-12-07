@@ -32,6 +32,12 @@ public class StubInput implements Input {
      */
     @Override
     public String ask(String question) {
-        return this.value[this.position++];
+        String result = null;
+        if (this.position < this.value.length) {
+            result = this.value[this.position++];
+        } else {
+            result = "";
+        }
+        return result;
     }
 }
