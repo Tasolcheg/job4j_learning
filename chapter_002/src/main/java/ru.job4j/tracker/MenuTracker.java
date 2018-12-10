@@ -171,8 +171,16 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            StartUI startUI = new StartUI(input, tracker);
-            startUI.edit();
+            System.out.println("Редактирование заяки");
+            String id = input.ask("Введите id");
+            String name = input.ask("Введите новое название");
+            String desc = input.ask("Введите новое описание");
+            Boolean res = tracker.replace(id, new Item(name, desc));
+            if (res) {
+                System.out.println("Заявка изменена");
+            } else {
+                System.out.println("ID не найдено");
+            }
         }
 
         @Override
