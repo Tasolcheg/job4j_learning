@@ -17,6 +17,14 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
+//    private int[] ranges = new int[]{0, 1, 2, 3, 4, 5};
+    private int[] ranges(int iq) {
+        int[] result = new int[iq];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = i;
+        }
+        return result;
+    }
 
     /**
      * Конструтор инициализирующий поля.
@@ -41,18 +49,10 @@ public class StartUI {
         }
         do {
             menu.show();
-            String ttest = input.ask("Введите пункт меню");
-            if (ttest.matches("\\D+") || ttest.equals("")) {
-                System.out.println("Неверный ввод");
-            } else {
-                Integer kkey = Integer.valueOf(ttest);
-
-                if (kkey < menu.getActionsLentgh()) {
-                    menu.select(kkey);
-                }
-            }
+            menu.select(input.ask("select:", ranges(menu.getActionsLentgh())));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
+
     /**
      * Метод реализует добавленяи новый заявки в хранилище.
      */
@@ -62,6 +62,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
