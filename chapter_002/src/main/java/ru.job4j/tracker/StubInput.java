@@ -32,11 +32,9 @@ public class StubInput implements Input {
      */
     @Override
     public String ask(String question) {
-        String result = null;
+        String result = "";
         if (this.position < this.value.length) {
             result = this.value[this.position++];
-        } else {
-            result = "";
         }
         return result;
     }
@@ -51,11 +49,10 @@ public class StubInput implements Input {
                 break;
             }
         }
-        if (exist) {
-            return key;
-        } else {
+        if (!exist) {
             throw new MenuOutException("Вышел за пределы массива");
         }
+        return key;
     }
 
 }
