@@ -72,19 +72,10 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction {
-        private final int key;
-        private final String info;
+    private class AddItem extends BaseAction {
 
-        private AddItem(int key, String info) {
-            this.key = key;
-            this.info = info;
-        }
-
-
-        @Override
-        public int key() {
-            return key;
+        private AddItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -94,25 +85,12 @@ public class MenuTracker {
             String desc = input.ask("desc");
             tracker.add(new Item(name, desc));
         }
-
-        @Override
-        public String info() {
-            return String.format("%s - %s", key(), info);
-        }
     }
 
-    private class ShowItems implements UserAction {
-        private final String info;
-        private final int key;
+    private class ShowItems extends BaseAction {
 
-        private ShowItems(int key, String info) {
-            this.info = info;
-            this.key = key;
-        }
-
-        @Override
-        public int key() {
-            return key;
+        private ShowItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -121,52 +99,25 @@ public class MenuTracker {
                 System.out.println(a);
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s - %s", this.key, this.info);
-        }
-
     }
 
-    private class DeleteItem implements UserAction {
-        private final int key;
-        private final String info;
+    private class DeleteItem extends BaseAction {
 
-        private DeleteItem(int key, String info) {
-            this.key = key;
-            this.info = info;
+        private DeleteItem(int key, String name) {
+            super(key, name);
         }
 
-
-        @Override
-        public int key() {
-            return key;
-        }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.delete(input.ask("Введите ID заявки"));
         }
-
-        @Override
-        public String info() {
-            return String.format("%s - %s", key(), info);
-        }
     }
 
-    private class EditItem implements UserAction {
-        private final int key;
-        private final String info;
+    private class EditItem extends BaseAction {
 
-        private EditItem(int key, String info) {
-            this.key = key;
-            this.info = info;
-        }
-
-        @Override
-        public int key() {
-            return key;
+        private EditItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -183,24 +134,12 @@ public class MenuTracker {
             }
         }
 
-        @Override
-        public String info() {
-            return String.format("%s - %s", key(), info);
-        }
     }
 
-    private class FindItemById implements UserAction {
-        private final int key;
-        private final String info;
+    private class FindItemById extends BaseAction {
 
-        private FindItemById(int key, String info) {
-            this.key = key;
-            this.info = info;
-        }
-
-        @Override
-        public int key() {
-            return key;
+        private FindItemById(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -212,27 +151,13 @@ public class MenuTracker {
                 System.out.println(a);
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s - %s", key(), info);
-        }
     }
 
-    private class FindItemsByName implements UserAction {
-        private final int key;
-        private final String info;
+    private class FindItemsByName extends BaseAction {
 
-        private FindItemsByName(int key, String info) {
-            this.key = key;
-            this.info = info;
+        private FindItemsByName(int key, String name) {
+            super(key, name);
         }
-
-        @Override
-        public int key() {
-            return key;
-        }
-
         @Override
         public void execute(Input input, Tracker tracker) {
             Item[] itemm = tracker.findByName(input.ask("Введите название заявки"));
@@ -243,11 +168,6 @@ public class MenuTracker {
             } else {
                 System.out.println("Не найдено");
             }
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s - %s", key(), info);
         }
     }
 }

@@ -13,17 +13,17 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
     String menu = new StringBuilder()
-            .append("0 - Добавление заявки")
+            .append("0 : Добавление заявки")
             .append(System.lineSeparator())
-            .append("1 - Show all items")
+            .append("1 : Show all items")
             .append(System.lineSeparator())
-            .append("2 - Delete item")
+            .append("2 : Delete item")
             .append(System.lineSeparator())
-            .append("3 - Edit item")
+            .append("3 : Edit item")
             .append(System.lineSeparator())
-            .append("4 - Find item by Id")
+            .append("4 : Find item by Id")
             .append(System.lineSeparator())
-            .append("5 - Find items by name")
+            .append("5 : Find items by name")
             .append(System.lineSeparator())
             .toString();
 
