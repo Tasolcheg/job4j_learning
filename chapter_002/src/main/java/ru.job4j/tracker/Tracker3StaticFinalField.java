@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker3StaticFinalField {
-    private static final Tracker3StaticFinalField instance = new Tracker3StaticFinalField();
+    private static final Tracker3StaticFinalField INSTANCE = new Tracker3StaticFinalField();
 
     private Tracker3StaticFinalField() {
     }
 
     public static Tracker3StaticFinalField getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     public static void main(String[] args) {

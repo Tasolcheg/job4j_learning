@@ -17,7 +17,8 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
-//    private int[] ranges = new int[]{0, 1, 2, 3, 4, 5};
+
+    //    private int[] ranges = new int[]{0, 1, 2, 3, 4, 5};
     private int[] ranges(int iq) {
         int[] result = new int[iq];
         for (int i = 0; i < result.length; i++) {
