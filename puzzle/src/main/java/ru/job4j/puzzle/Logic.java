@@ -66,27 +66,49 @@ public class Logic {
         return rst;
     }
 
+
+    //    public boolean isWin() {
+//        int[][] table = this.convert();
+//        boolean result = false;
+//        for (int z = 0; z < this.size; z++) {
+//            if (!result) {
+//                for (int a = 0; a < this.size; a++) {
+//                    if (table[z][a] == 1 & table[z][size - 1 - a] == 1
+//                            || table[a][z] == 1 & table[size - 1 - a][z] == 1) {
+//                        result = true;
+//                    } else {
+//                        result = false;
+//                        break;
+//                    }
+//                }
+//            } else {
+//                break;
+//            }
+//        }
+//        return result;
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        for (int z = 0; z < this.size; z++) {
-            if (!result) {
-                for (int a = 0; a < this.size; a++) {
-                    if (table[0 + z][a] == 1 & table[0 + z][size - 1 - a] == 1
-                            || table[a][0 + z] == 1 & table[size - 1 - a][0 + z] == 1) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            } else {
+        int resg = 0;
+        int resv = 0;
+        for (int a = 0; a < this.size; a++) {
+            if (resg == this.size || resv == this.size) {
+                result = true;
                 break;
+            }
+            resv = 0;
+            resg = 0;
+            for (int z = 0; z < this.size; z++) {
+                if (table[a][z] == 1) {
+                    resv++;
+                }
+                if (table[z][a] == 1) {
+                    resg++;
+                }
             }
         }
         return result;
     }
-
 
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
