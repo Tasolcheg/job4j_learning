@@ -67,54 +67,13 @@ public class Logic {
     }
 
     public boolean isWin() {
-        return (ifwindiagonal1() || ifwindiagonal2() || ifwingorizontal() || ifwinvertical());
-    }
-
-    private boolean ifwindiagonal1() {
-        int[][] table = this.convert();
-        boolean result = false;
-        if (!result) {
-            for (int a = 0; a < this.size; a++) {
-                if (table[a][a] == 1) {
-                    result = true;
-                } else {
-                    result = false;
-                    break;
-                }
-            }
-        } else {
-            result = false;
-        }
-
-        return result;
-
-    }
-
-    private boolean ifwindiagonal2() {
-        int[][] table = this.convert();
-        boolean result = false;
-        if (!result) {
-            for (int a = 0; a < this.size; a++) {
-                if (table[size - 1 - a][size - 1 - a] == 1) {
-                    result = true;
-                } else {
-                    result = false;
-                    break;
-                }
-            }
-        } else {
-            result = false;
-        }
-        return result;
-    }
-
-    private boolean ifwinvertical() {
         int[][] table = this.convert();
         boolean result = false;
         for (int z = 0; z < this.size; z++) {
             if (!result) {
                 for (int a = 0; a < this.size; a++) {
-                    if (table[0 + z][a] == 1 & table[0 + z][size - 1 - a] == 1) {
+                    if (table[0 + z][a] == 1 & table[0 + z][size - 1 - a] == 1
+                            || table[a][0 + z] == 1 & table[size - 1 - a][0 + z] == 1) {
                         result = true;
                     } else {
                         result = false;
@@ -128,25 +87,6 @@ public class Logic {
         return result;
     }
 
-    private boolean ifwingorizontal() {
-        int[][] table = this.convert();
-        boolean result = false;
-        for (int z = 0; z < this.size; z++) {
-            if (!result) {
-                for (int a = 0; a < this.size; a++) {
-                    if (table[a][0 + z] == 1 & table[size - 1 - a][0 + z] == 1) {
-                        result = true;
-                    } else {
-                        result = false;
-                        break;
-                    }
-                }
-            } else {
-                break;
-            }
-        }
-        return result;
-    }
 
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
